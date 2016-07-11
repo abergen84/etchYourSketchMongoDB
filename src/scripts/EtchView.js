@@ -6,7 +6,7 @@ const EtchView = React.createClass({
 	
 	getInitialState: function(){
 		return {
-			canvas: 512
+			canvas: 1024
 		}
 	},
 
@@ -55,8 +55,8 @@ const Header = React.createClass({
 				<div id="canvasSelector">
 					<p>canvas size:</p>
 					<select onChange={this._handleCanvasSize} >
-						<option value="512">Small</option>
-						<option value="1024">Medium</option>
+						<option value="1024">Small</option>
+						<option value="1600">Medium</option>
 						<option value="2056">Large</option>
 					</select>
 					<button id="resetbutton" onClick={this._resetCanvas}>Messed up?</button>
