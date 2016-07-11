@@ -1,15 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import EtchView from './EtchView.js'
 
 const app = function() {
 
-	const Header = React.createClass({
-		render: () => {
-			return <h1>YOLO</h1>
-		}
-	})
-
-	ReactDOM.render(<Header/>,document.querySelector('.container'))
+	ReactDOM.render(<EtchView/>,document.querySelector('.container'))
 }
 
 app()
