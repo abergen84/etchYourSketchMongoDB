@@ -42,7 +42,8 @@
 	}
 	#etchContainer {
 		font-size: 0;
-		border: 10px solid red;
+		border: 40px solid red;
+		border-radius: 10px;
 		// display: flex;
 		width: 50%;
 		margin: 0 auto;
@@ -58,5 +59,26 @@
 		.drawn {
 			background: #333;
 		}
+	}
+
+	#leftButton {
+		// border: 2px solid black;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		left: 30%;
+		margin-top: -35px;
+		background: #fff;
+	}
+	#rightButton {
+		// border: 2px solid black;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		right: 30%;
+		margin-top: -35px;
+		background: #fff;
 	}
 }

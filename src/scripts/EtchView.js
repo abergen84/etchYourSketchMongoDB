@@ -27,6 +27,8 @@ const EtchView = React.createClass({
 				<Header />
 				<EtchContainer canvas={this.state.canvas} />
 			{/*<EtchContainer boxStatus={this.state.selected} />*/}
+				<div id="leftButton"></div>
+				<div id="rightButton"></div>
 			</div>
 			)
 	}
@@ -98,9 +100,7 @@ const Square = React.createClass({
 	componentWillMount: function(){
 		var self = this
 		Backbone.Events.on('resetCanvas', function(){
-			self.setState({
-				selected: false
-			})
+			self.setState(self.getInitialState())
 		})
 	},
 	
