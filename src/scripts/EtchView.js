@@ -59,7 +59,7 @@ const Header = React.createClass({
 						<option value="1024">Medium</option>
 						<option value="2056">Large</option>
 					</select>
-					<p id="resetbutton" onClick={this._resetCanvas}>Messed up?</p>
+					<button id="resetbutton" onClick={this._resetCanvas}>Messed up?</button>
 				</div>
 				
 			</header>
