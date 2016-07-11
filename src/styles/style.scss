@@ -26,6 +26,13 @@
 			select {
 				display: inline-block;
 			}
+			#resetbutton {
+				display: block;
+				border: 1px solid black;
+				width: 100px;
+				margin: 0 auto;
+				font-size: 12px;
+			}
 		}
 	}
 	#etchContainer {

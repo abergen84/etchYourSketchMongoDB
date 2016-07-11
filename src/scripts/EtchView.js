@@ -44,6 +44,10 @@ const Header = React.createClass({
 		// console.log(this)
 	},
 
+	_resetCanvas: function(){
+		Backbone.Events.trigger('resetCanvas')
+	},
+
 	render: function(){
 		return (
 			<header id="mainheader">
@@ -55,7 +59,9 @@ const Header = React.createClass({
 						<option value="1024">Medium</option>
 						<option value="2056">Large</option>
 					</select>
+					<p id="resetbutton" onClick={this._resetCanvas}>Messed up?</p>
 				</div>
+				
 			</header>
 			)
 	}
@@ -87,6 +93,15 @@ const Square = React.createClass({
 		return {
 			selected: false
 		}
+	},
+
+	componentWillMount: function(){
+		var self = this
+		Backbone.Events.on('resetCanvas', function(){
+			self.setState({
+				selected: false
+			})
+		})
 	},
 	
 	_handleHover: function(){
