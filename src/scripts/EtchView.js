@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 
 const EtchView = React.createClass({
-	
+
 	getInitialState: function(){
 		return {
-			canvas: 1024
+			canvas: 1024,
+			selected: new Array(1024).fill(false)// make this an array of "false" 1024 times.
 		}
 	},
 
@@ -17,18 +18,32 @@ const EtchView = React.createClass({
 				canvas: e
 			})
 		})
+
+		Backbone.Events.on('fillBox', function(i){
+			self.setState({
+				selected: self.state.selected.slice(0,i).concat([true]).concat(self.state.selected.slice(i+1))
+			})
+		})
+
+		Backbone.Events.on('resetCanvas', function(){
+			// self.setState(self.getInitialState())
+			self.setState({
+				selected: new Array(1024).fill(false)
+			})
+		})
 		// console.log("setting the box:", this.state)
 	},
 
 	render: function(){
-		console.log("render top level", this)
+		// console.log("render top level", this)
 		return (
 			<div id="mainContainer">
 				<Header />
-				<EtchContainer canvas={this.state.canvas} />
+				<EtchContainer boxVals={this.state.selected} canvas={this.state.canvas} />
 			{/*<EtchContainer boxStatus={this.state.selected} />*/}
 				<div id="leftButton"></div>
 				<div id="rightButton"></div>
+				<SaveContainer boxVals={this.state.selected} canvas={this.state.canvas} />
 			</div>
 			)
 	}
@@ -38,12 +53,8 @@ const EtchView = React.createClass({
 const Header = React.createClass({
 	
 	_handleCanvasSize: function(e){
-		console.log(e.target.value)
 		Backbone.Events.trigger('selectCanvas', e.target.value)
-		// this.setState({
-		// 	canvas: e.target.value
-		// })
-		// console.log(this)
+
 	},
 
 	_resetCanvas: function(){
@@ -74,13 +85,13 @@ const EtchContainer = React.createClass({
 	_populateBoxes: function(){
 		var my_array = []
 		for(var i = 0; i < this.props.canvas; i++){
-			my_array.push(<Square />)
+			my_array.push(<Square selected={this.props.boxVals[i]} myIndex={i} />)
 		}
 		return my_array
 	},	
 
 	render: function(){
-		console.log(this)
+		// console.log(this)
 		return (
 			<div id="etchContainer">
 				{this._populateBoxes()}
@@ -91,39 +102,60 @@ const EtchContainer = React.createClass({
 
 const Square = React.createClass({
 
-	getInitialState: function(){
-		return {
-			selected: false
-		}
-	},
+	// getInitialState: function(){
+	// 	return {
+	// 		selected: false
+	// 	}
+	// },
 
-	componentWillMount: function(){
-		var self = this
-		Backbone.Events.on('resetCanvas', function(){
-			self.setState(self.getInitialState())
-		})
-	},
+	// componentWillMount: function(){
+	// 	var self = this
+	// 	Backbone.Events.on('resetCanvas', function(){
+	// 		self.setState(self.getInitialState())
+	// 	})
+	// },
 	
 	_handleHover: function(){
-		this.setState({
-			selected: true
-		})
+		// this.setState({
+		// 	selected: true
+		// })
+		Backbone.Events.trigger('fillBox',this.props.myIndex)
 	},
 
 	render: function(){
 		// console.log(this)
 		var active = "box"
-		if(this.state.selected){
+		if(this.props.selected){
 			active = "box drawn"
 		}
 		return (
-			<div className={active} onMouseOver={this._handleHover}>
+			<div className={active} onMouseEnter={this._handleHover}>
 			</div>
 		)
 	}
 })
 
+const SaveContainer = React.createClass({
 
+	_saveDrawing: function(e){
+		var savedDrawing = new DrawingModel({
+			title: e.target.save.value,
+			canvasSize: this.props.canvas,
+			boxVals: this.props.boxVals
+		})
+		savedDrawing.save()
+	},
+
+	render: function(){
+		// console.log(this)
+		return (
+			<form onSubmit={this._saveDrawing} >
+			<input type="text" name="save" placeholder="name of drawing to save" />
+			<button type="submit" value="save">Save</button>
+			</form>
+			)
+	}
+})
 
 
 

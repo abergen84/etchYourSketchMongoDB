@@ -8,13 +8,13 @@ const usersSchema = new Schema({
     password: String,
 })
 
-const postsSchema = new Schema({
-  title: String, 
-  body: String,
-  user: Object
+const drawingSchema = new Schema({
+	title: String,
+	canvasSize: Number,
+	boxVals: Array
 })
 
 module.exports = {
   User: createModel('User', usersSchema),
-  Post: createModel('Post', postsSchema)
+  Drawing: createModel('Drawing', drawingSchema)
 }
