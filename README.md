@@ -11,7 +11,8 @@ save and retrieve that slick sketch.
 ##Application Ins and Outs
 
 Using React in combination with Backbone and MongoDB for full-stack app development.
--React for the user experience
--Backbone to handle the models and collection, in addition to controller
--MongoDB to handle the data storage and retrieval
+
+- React for the user experience
+- Backbone to handle the models and collection, in addition to controller
+- MongoDB to handle the data storage and retrieval
 
