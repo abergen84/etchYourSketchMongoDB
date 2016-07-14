@@ -9,7 +9,7 @@ or straight up awful. The choice is yours. Draw something and wish you could
 save it and come back to it later? Now you can. Using MongoDB, a backend exists to 
 save and retrieve that slick sketch.
 
-###Application Features
+##Application Features
 
 - Choose your canvas size (between small, medium, and large)
 - Messed up? Hit that descriptive button and have it reset the canvas so you can start over
@@ -18,11 +18,11 @@ then view the saved drawings via the bottom link.
 - Load saved drawings from the Saved Drawings page. Find yours, load it, and pick up right
 where you left off.
 
-##Application Ins and Outs
+##Application Stack
 
 Using React in combination with Backbone and MongoDB for full-stack app development.
 
-- React for the user experience
+- React for the user experience/view
 - Backbone to handle the models and collection, in addition to controller
 - MongoDB to handle the data storage and retrieval
 
