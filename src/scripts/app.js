@@ -12,7 +12,7 @@ var DrawingRouter = Backbone.Router.extend({
 	routes: {
 		"drawings/view": "viewDrawings",
 		"drawings/:id": "viewSingleDrawing",
-		"home": "goHome",
+		"draw": "goHome",
 		"*catchall": "routeHome"
 	},
 
@@ -21,7 +21,7 @@ var DrawingRouter = Backbone.Router.extend({
 	},
 
 	routeHome: function(){
-		location.hash = "home"
+		location.hash = "draw"
 	},
 
 	goHome: function(){

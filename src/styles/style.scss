@@ -113,3 +113,42 @@
 		}
 	}
 }
+
+#drawingView {
+	#savedHeader {
+		h1 {
+			font-family: "Megrim";
+			font-size: 52px;
+			text-align: center;
+			margin-bottom: 0;
+		}
+		h3 {
+			text-align: center;
+			font-family: "PT Mono";
+		}
+	}
+	#drawingContainer {
+		border: 40px solid red;
+		border-radius: 10px;
+		width: 60%;
+		margin: 0 auto;
+		padding: 40px;
+		.drawing {
+			// padding-left: 20px;
+			cursor: pointer;
+			h1 {
+				font-family: "PT Mono";
+				font-size: 22px;
+			}
+		}
+	}
+	footer {
+		text-align: center;
+		margin-top: 20px;
+		a {
+			font-family: "PT Mono";
+			// text-decoration: none;
+			color: #000;
+		}
+	}
+}

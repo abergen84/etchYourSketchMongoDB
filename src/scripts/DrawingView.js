@@ -22,6 +22,7 @@ const DrawingView = React.createClass({
 			<div id="drawingView">
 				<Header />
 				<DrawingContainer drawColl={this.state.drawColl} />
+				<Footer />
 			</div>
 			)
 	}
@@ -31,8 +32,9 @@ const DrawingView = React.createClass({
 const Header = React.createClass({
 	render: function(){
 		return (
-			<div>
-				<h1>Saved Drawings</h1>
+			<div id="savedHeader">
+				<h1>etchYourSketch</h1>
+				<h3>Saved Drawings</h3>
 			</div>
 			)
 	}
@@ -64,6 +66,16 @@ const Drawing = React.createClass({
 			<div className="drawing">
 				<h1 onClick={this._handleClick} >{this.props.model.get('title')}</h1>
 			</div>
+			)
+	}
+})
+
+const Footer = React.createClass({
+	render: function(){
+		return (
+			<footer>
+				<a href="#draw">back home</a>
+			</footer>
 			)
 	}
 })
