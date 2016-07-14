@@ -20,11 +20,22 @@ apiRouter.get('/users', function(req, res){
 
 //read many for drawings
 
-apiRouter.get('/drawing', function(req, res){
+apiRouter.get('/drawing', function(request, response){
   Drawing.find({}, function(err, results){
-    res.json(results)
+    response.json(results)
   })
 })
+
+//read one for drawings. see the .findOne() method in mongoose docs.
+
+apiRouter.get('/drawing/:_id', function(request,response) {
+  Drawing.findOne({_id: request.params._id}, function(err, results){
+    response.json(results)
+  })
+  // console.log(req.params)
+  // res.send('hi')
+})
+
 // //read one
 // apiRouter.get('/posts/:_id', function(req, res){
 //   Post.findOne(req.params, function(err, result){

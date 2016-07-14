@@ -81,4 +81,35 @@
 		margin-top: -35px;
 		background: #fff;
 	}
+
+	#saveContainer {
+		text-align: center;
+		margin: 20px 0;
+		input {
+			width: 200px;
+			height: 30px;
+			font-size: 11px;
+			margin-bottom: 15px;
+			font-family: "PT Mono";
+		}
+		button {
+			outline: none;
+			cursor: pointer;
+			border-width: 0;
+			background: red;
+			color: #fff;
+			height: 28px;
+			width: 50px;
+			margin-left: 5px;
+			font-family: "PT Mono";
+		}
+		a {
+			text-decoration: none;
+			border: 1px solid #000;
+			font-size: 14px;
+			padding: 5px 10px;
+			color: #000;
+			font-family: "PT Mono";
+		}
+	}
 }
